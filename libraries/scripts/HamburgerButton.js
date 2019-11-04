@@ -2,7 +2,7 @@
  * @file HamburgerButton クラスのファイルです。
  * 
  * @author MOTOMATSU Yoji
- * @version 1.4.0
+ * @version 1.4.1
  */
 
 import { HTMLUtilities } from './HTMLUtilities.js';
@@ -179,7 +179,7 @@ export class HamburgerButton {
      */
     hide() {
         this._element.style.transition =
-            `opacity ${Theme.transitionDuration}, visibility 0s ${Theme.transitionDeleay}`;
+            `opacity ${Theme.transitionDelay}, visibility 0s ${Theme.transitionDelay}`;
         this._element.style.opacity = '0.0';
         this._element.style.visibility = 'hidden';
     }
