@@ -1,0 +1,15 @@
+@import "../libraries/styles/default.css";
+
+div#hamburger-button {
+  position: fixed;
+  left: 1.0rem;
+  top:  1.0rem;
+  height: calc(2*var(--default-font-size));
+  width:  calc(2*var(--default-font-size));
+}
+
+div#result {
+  position: fixed;
+  left: 1.0rem;
+  top:  5.6rem;
+}
