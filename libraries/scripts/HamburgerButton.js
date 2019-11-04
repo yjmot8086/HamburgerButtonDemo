@@ -2,7 +2,7 @@
  * @file HamburgerButton クラスのファイルです。
  * 
  * @author MOTOMATSU Yoji
- * @version 1.4.1
+ * @version 1.5.0
  */
 
 import { HTMLUtilities } from './HTMLUtilities.js';
@@ -54,13 +54,12 @@ export class HamburgerButton {
         this._element.style.zIndex = HamburgerButton.zIndex;
 
         // Hamburger Button は幅と高さが 72px の時に角部の丸みが 8px の比率とします。
-        const width = HTMLUtilities.getPropertyValueAsInteger(this._element, 'width');
-        const radius = 8 * width / 72;
+        // const width = HTMLUtilities.getPropertyValueAsInteger(this._element, 'width');
+        // const radius = 8 * width / 72;
 
         this._pushed = false;
         this._pushing = false;
-        this._boxShadow =
-            `${radius / 2}px ${radius / 2}px ${radius / 2}px 0px ${Theme.darkBorderColor}`;
+        // this._boxShadow = `${radius / 2}px ${radius / 2}px ${radius / 2}px 0px ${Theme.darkBorderColor}`;
 
         // Hamburger Button のバーは、上下の隙間 = 16、左右の隙間（半径部を除く）= 10、
         // 太さ = 4、半径 = 2、バーの長さ（半径部を除く）= 52 で設定しています。
@@ -90,7 +89,7 @@ export class HamburgerButton {
         this._svgElement.style.height = '100%';
         this._svgElement.style.width = '100%';
         this._svgElement.style.border = 'none';
-        this._svgElement.style.borderRadius = `${radius}px`;
+        this._svgElement.style.borderRadius = Theme.defaultBorderRadious;
         this._svgElement.style.zIndex = HamburgerButton.zIndex;
         this._svgRectId = this._svgElement.getElementById(svgRectId);
         this._svgTopBarId = this._svgElement.getElementById(svgTopBarId);
@@ -104,7 +103,7 @@ export class HamburgerButton {
         this._shadowElement.style.height = '100%';
         this._shadowElement.style.width = '100%';
         this._shadowElement.style.border = 'none';
-        this._shadowElement.style.borderRadius = `${radius}px`;
+        this._shadowElement.style.borderRadius = Theme.defaultBorderRadious;
         this._shadowElement.style.zIndex = HamburgerButton.zIndexShadow;
 
         this._element.appendChild(this._svgElement);
@@ -169,7 +168,7 @@ export class HamburgerButton {
      */
     show() {
         this._element.style.transition =
-            `opacity ${Theme.transitionDuration}, visibility 0s`;
+            `opacity ${Theme.defaultTransitionDuration}, visibility 0s`;
         this._element.style.opacity = '1.0';
         this._element.style.visibility = 'visible';
     }
@@ -178,8 +177,8 @@ export class HamburgerButton {
      * ボタンを非表示にします。
      */
     hide() {
-        this._element.style.transition =
-            `opacity ${Theme.transitionDelay}, visibility 0s ${Theme.transitionDelay}`;
+        this._element.style.transition = `opacity ${Theme.defaultTransitionDelay},
+            visibility 0s ${Theme.defaultTransitionDelay}`;
         this._element.style.opacity = '0.0';
         this._element.style.visibility = 'hidden';
     }
@@ -194,9 +193,9 @@ export class HamburgerButton {
             }
         } else {
             if (this._pushed) {
-                this._setPushedColor(Theme.transitionDuration);
+                this._setPushedColor(Theme.defaultTransitionDuration);
             } else {
-                this._setNormalColor(Theme.transitionDuration);
+                this._setNormalColor(Theme.defaultTransitionDuration);
             }
         }
     }
@@ -209,28 +208,28 @@ export class HamburgerButton {
             // 上下のバーを 43.8131° 回転して高さを 36 にします。
             // さらに X 方向に 7 移動します。
             this._svgTopBarId.style.transition =
-                `transform-origin 0s, transform ${Theme.transitionDuration}`;
+                `transform-origin 0s, transform ${Theme.defaultTransitionDuration}`;
             this._svgTopBarId.style.transformOrigin = '10px 18px';
             this._svgTopBarId.style.transform = 'translateX(7px) rotate(43.8131deg)';
 
-            this._svgCenterBarId.style.transition = `opacity ${Theme.transitionDuration}`;
+            this._svgCenterBarId.style.transition = `opacity ${Theme.defaultTransitionDuration}`;
             this._svgCenterBarId.style.opacity = '0.0';
 
             this._svgBottomBarId.style.transition =
-                `transform-origin 0s, transform ${Theme.transitionDuration}`;
+                `transform-origin 0s, transform ${Theme.defaultTransitionDuration}`;
             this._svgBottomBarId.style.transformOrigin = '10px 54px';
             this._svgBottomBarId.style.transform = 'translateX(7px) rotate(-43.8131deg)';
         } else {
             this._svgTopBarId.style.transition =
-                `transform-origin 0s, transform ${Theme.transitionDuration}`;
+                `transform-origin 0s, transform ${Theme.defaultTransitionDuration}`;
             this._svgTopBarId.style.transformOrigin = '10px 18px';
             this._svgTopBarId.style.transform = 'rotate(0) translateX(0)';
 
-            this._svgCenterBarId.style.transition = `opacity ${Theme.transitionDuration}`;
+            this._svgCenterBarId.style.transition = `opacity ${Theme.defaultTransitionDuration}`;
             this._svgCenterBarId.style.opacity = '1.0';
 
             this._svgBottomBarId.style.transition =
-                `transform-origin 0s, transform ${Theme.transitionDuration}`;
+                `transform-origin 0s, transform ${Theme.defaultTransitionDuration}`;
             this._svgBottomBarId.style.transformOrigin = '10px 54px';
             this._svgBottomBarId.style.transform = 'rotate(0) translateX(0)';
         }
@@ -238,14 +237,14 @@ export class HamburgerButton {
 
     _setNormalColor(duration) {
         this._shadowElement.style.transition = `box-shadow ${duration}`;
-        this._shadowElement.style.boxShadow = this._boxShadow;
+        this._shadowElement.style.boxShadow = Theme.defaultBoxShadow;
         this._svgRectId.style.transition = `fill ${duration}`;
         this._svgRectId.style.fill = Theme.mainColor;
     }
 
     _setPushedColor(duration) {
         this._shadowElement.style.transition = `box-shadow ${duration}`;
-        this._shadowElement.style.boxShadow = `${this._boxShadow} inset`;
+        this._shadowElement.style.boxShadow = `${Theme.defaultBoxShadow} inset`;
         this._svgRectId.style.transition = `fill ${duration}`;
         this._svgRectId.style.fill = Theme.accentColor;
     }
