@@ -2,11 +2,11 @@
  * @file HamburgerButton クラスのファイルです。
  * 
  * @author MOTOMATSU Yoji
- * @version 1.5.0
+ * @version 1.6.1
  */
 
-import { HTMLUtilities } from './HTMLUtilities.js';
-import { Theme } from './Theme.js';
+import { HTMLUtilities } from './HTMLUtilities';
+import { Theme } from './Theme';
 
 /**
  * HamburgerButton クラスです。
@@ -126,8 +126,7 @@ export class HamburgerButton {
             let rect = this._svgElement.getBoundingClientRect();
             let x = event.touches[0].clientX;
             let y = event.touches[0].clientY;
-            if ((x < rect.left) || (rect.right < x) ||
-                (y < rect.top) || (rect.bottom < y)) {
+            if (x < rect.left || rect.right < x || y < rect.top || rect.bottom < y) {
                 this._setPushing(false);
             }
         });

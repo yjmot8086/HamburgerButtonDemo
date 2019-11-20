@@ -2,7 +2,7 @@
  * @file HTMLUtilities クラスのファイルです。
  * 
  * @author MOTOMATSU Yoji
- * @version 1.5.0
+ * @version 1.6.1
  */
 
 /**
@@ -18,11 +18,12 @@ export class HTMLUtilities {
                 event.preventDefault();
             }
         }, { passive: false });
-    };
+    }
 
     /**
      * CSS Variables を取得します。
      * @param {string} propertyName - プロパティ名
+     * @returns {string} - プロパティの値
      */
     static getRootPropertyValue(propertyName) {
         const styles = getComputedStyle(document.documentElement);

@@ -2,10 +2,10 @@
  * @file Theme クラスのファイルです。
  * 
  * @author MOTOMATSU Yoji
- * @version 1.5.0
+ * @version 1.6.1
  */
 
-import { HTMLUtilities } from './HTMLUtilities.js';
+import { HTMLUtilities } from './HTMLUtilities';
 
 /**
  * Theme クラスです。
@@ -164,7 +164,7 @@ export class Theme {
     static set defaultFontSize(value) {
         HTMLUtilities.setRootPropertyValue('--default-font-size', value);
     }
-    
+
     /**
      * デフォルトの見出しタグのフォントサイズのプロパティです。
      * @property {string} value - css プロパティの値
@@ -207,5 +207,16 @@ export class Theme {
     }
     static set defaultBorderRadious(value) {
         HTMLUtilities.setRootPropertyValue('--default-border-radious', value);
+    }
+
+    /**
+     * デフォルトの PC スクリーンの最小幅です。
+     * @property {string} value - css プロパティの値
+     */
+    static get defaultPCScreenMinWidth() {
+        return HTMLUtilities.getRootPropertyValue('--default-pc-screen-min-width');
+    }
+    static set defaultPCScreenMinWidth(value) {
+        HTMLUtilities.setRootPropertyValue('--default-pc-screen-min-width', value);
     }
 }
