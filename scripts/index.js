@@ -1,4 +1,4 @@
-import { HamburgerButton } from '../libraries/scripts/HamburgerButton';
+import { HamburgerButton } from '../modules/scripts/HamburgerButton';
 
 const hamburgerButton = new HamburgerButton('hamburger-button');
 const result = document.getElementById('result');
