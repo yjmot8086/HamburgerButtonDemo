@@ -5,7 +5,7 @@
  * @version 1.6.1
  */
 
-import { HTMLUtilities } from './HTMLUtilities';
+import { HTMLUtilities } from './HTMLUtilities.js';
 
 /**
  * Theme クラスです。

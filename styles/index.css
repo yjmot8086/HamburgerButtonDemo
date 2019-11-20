@@ -1,4 +1,4 @@
-@import "../libraries/styles/default.css";
+@import "../modules/styles/default.css";
 
 div#hamburger-button {
   position: fixed;

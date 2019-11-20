@@ -5,8 +5,8 @@
  * @version 1.6.1
  */
 
-import { HTMLUtilities } from './HTMLUtilities';
-import { Theme } from './Theme';
+import { HTMLUtilities } from './HTMLUtilities.js';
+import { Theme } from './Theme.js';
 
 /**
  * HamburgerButton クラスです。
