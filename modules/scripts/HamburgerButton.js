@@ -126,7 +126,7 @@ export class HamburgerButton {
             let rect = this._svgElement.getBoundingClientRect();
             let x = event.touches[0].clientX;
             let y = event.touches[0].clientY;
-            if (x < rect.left || rect.right < x || y < rect.top || rect.bottom < y) {
+            if ((x < rect.left) || (rect.right < x) || (y < rect.top) || (rect.bottom < y)) {
                 this._setPushing(false);
             }
         });
